@@ -1,0 +1,20 @@
+We previosuly saw how to automate backpropagation by setting and calling a backward method for each in our graph. Our ability to make this work properly depended on our abilty to call the backward() methods in the right order. That is, backward propagation should only go through a node when it has gone through all of its ancestors.
+
+To automate this process of knowing which node to backpropagate next, we can use Topological Sort.
+
+Topological Sort is essentially a way to sort the nodes of a Directled Acyclic Graph such that all the edges go only in one way. Hence, a node in a topological sorting of a given DAG has all its descendants ahead of it.
+
+We will make use of this sorting method to implement backpropagation on our entire graph.
+
+Mutlivariant Chain Rule
+Our current solution suffers from a pretty bad bug: it does not work when nodes are reused, their grad simply gets overwritten each time it is calculated in another context.
+The solution here, if we look at the multivariant version of the chain rule is that we have to add the gradients.
+
+This allows us to obtain such construct:
+![Alt text](./illustrations/introducing_multivariant_backprop.png?raw=true "Mutlivariant Backpropagation")
+
+Adding our Operations
+Finally, we imrpoved our Value class by enabling it to handle more operations.
+
+These additional operations are showcased in the following graph, where we replaced the used of the tanh() function with the written out version of tanh().
+![Alt text](./illustrations/adding_operations.png?raw=true "Adding Operations")
