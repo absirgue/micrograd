@@ -1,0 +1,16 @@
+# Chapter 6: Building Neural Networks
+
+We now have some machinery (the Value class) to build out some pretty complex mathematial expressions. We can therefore start to build Neural Networks.
+
+## Building out a Mutli-Layer Perceptron
+
+Our Neural Network is made of multiple layers. These layers are themselves made of mutliple neurons. The neurons in a layer are not connected to each others but are each fully connected with the input (which can be the input layer or the previous hidden layer).
+
+A layer is therefore simply a set of neurons.
+
+## Creating an MLP in Code
+
+We wrote the Neuron, Layer, and MLP classes that can be used to create a n layers network of y-dimmensional neurons where each layer can itself have a specific number of neurons.
+
+This leads to more complicated graphs!
+![Alt text](./illustrations/first_mlp.png?raw=true "First MLP")

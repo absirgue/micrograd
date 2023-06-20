@@ -1,3 +1,5 @@
+# Chapter 5: Implementing backpropagation for a whole expression graph
+
 We previosuly saw how to automate backpropagation by setting and calling a backward method for each in our graph. Our ability to make this work properly depended on our abilty to call the backward() methods in the right order. That is, backward propagation should only go through a node when it has gone through all of its ancestors.
 
 To automate this process of knowing which node to backpropagate next, we can use Topological Sort.
@@ -6,7 +8,8 @@ Topological Sort is essentially a way to sort the nodes of a Directled Acyclic G
 
 We will make use of this sorting method to implement backpropagation on our entire graph.
 
-Mutlivariant Chain Rule
+## Mutlivariant Chain Rule
+
 Our current solution suffers from a pretty bad bug: it does not work when nodes are reused, their grad simply gets overwritten each time it is calculated in another context.
 The solution here, if we look at the multivariant version of the chain rule is that we have to add the gradients.
 
