@@ -1,4 +1,6 @@
-Backpropagation - the Importance of the Chain Rule
+# Chapter 3: Backpropagation
+
+## Backpropagation - the Importance of the Chain Rule
 
 With backpropagation, our goal is to know the impact of each variable, for Neural Networks of each weight, on the final output, for Neural Networks often the value of the loss function.
 

@@ -1,4 +1,7 @@
-What is micrograd ?
+# Chapter 1: Introduction
+
+## What is micrograd ?
+
 Is an Autograd engine, Autograd is short of autoamted gradient. It implements backpropagation. Backpropagation is a the mathematical core of any modern Deep Neural Network library like PyTorch.
 
 Micrograd is in fact a scalar valued autograd engine. It is working on the level of individual scalars. This is excssive and would neevr be done in production, this is simply for educational purposes. If you have to train bigger networks, you use tensors. With tensors, none of the math changes, it is just a question of efficiency by combining numbers into arrays which can then be used to take advantage of a computer's ability to parallelize processes.
