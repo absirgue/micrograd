@@ -1,0 +1,52 @@
+# Chapter 7: Training our MLP
+
+We have now come to the point where we can assemble neurons in multi-layer neural perceptrons.
+
+The behavior of these MLPs, however, is completely heratic for now. This is because we have set the weights to random values and have no way of adjusting those values to enable our overall network to get closer to the expected answer.
+
+To be able to adjust those weights, Deep Learning uses a trick. We are going to introduce the loss function which returns a single number that measures the total performance of our Neural Network.
+
+## Creating the Loss Function
+
+To create the Loss Function, we need some measurment of our network's performance. One way to measure our network's performance is by using its Mean Squared Error.
+
+## Backpropagating from the Loss Function
+
+If we now backpropagate from the result of the loss function, we can calculate the gradient of each of our neuron's weights. This number tells the "direction" and "strength" of this weight's influence on the loss.
+
+With this information, we are able to take all of the network's weights and biases and to nudge them by a small amount depending on the value of their gradient.
+
+Our idea when adjusting each parameter's value is to take a very small step in the direction opposit of its gradient. We can see its gradient as a vector and our goal is to move by a very small amount (step size) in the direction opposit of that vector. We adjust the parameter's value in the opposit direction to get us closer to our goal of having minimal loss. For example, if a parameter has a negative gradient, a positive change in this parameter's value will have a negative impact on the loss. This simple method for updating parameters is called **Stochastic Update**.
+
+**Gradient Descent** can be decomposed in three operations:
+
+- foward pass
+- backward pass
+- update
+
+Performing these operations will decrease our network's loss. Repeating them multiple times would bring it closer to its minimal value, and, therefore, would optimize our network's performance.
+
+_Note:_ The step size used in our gradient descent is called the **learning rate**.
+
+Hence, choosing the right learning rate is a quite subtle art. Setting it too low and your network will take too much time to converge, setting it too high and your training will be destabilized and loss can skyrocket.
+
+This is because we only know the parameters' impacts on loss on a very local scale and exiting this locality can lead us to some completely unknown and unpredictable point on our loss function (which can be a quite complicated structure).
+
+**_CAREFUL_**: a very common bug is to forget to reset all the gradients to 0 at the end of an iteration ! (zero_grad() in Pytorch). Hence, a better succession of operations to implement to perform gradient descent is:
+
+- forward pass
+- flush all gradients
+- backward pass
+- update
+
+_Note:_ this highlight the fact that in Neural Networks our code can be buggy and still converge (at first, we did not flush gradients and it still worked quite well) but there is a low chance that ti still works on more complex problems.
+
+## Extending to More Complex Problems
+
+Micrograd can be used to build a binary classifier. This binary classifier is a more complex network and requires more training data. To process this additional training data, we will operate gradient descent on a "batch" of the training set, a randomly selected set of training examples and not the entire set.
+
+Additionally, we can change the loss function from the current MSE to other approaches like 'max-margin' loss.
+
+We can also add mechanisms like L2 regularization which has to do with generalization of the Neural Network and controlling overfitting in this Machine Learning context.
+
+We can also implement Learning Rate Decay to make the learning rate shrink as the number of iterations increases.
