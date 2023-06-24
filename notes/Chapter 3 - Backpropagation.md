@@ -4,7 +4,7 @@
 
 With backpropagation, our goal is to know the impact of each variable, for Neural Networks of each weight, on the final output, for Neural Networks often the value of the loss function.
 
-![Alt text](./micrograd/expression-graph-visualizations/Forward_pass_visualization.png?raw=true "Operation Tree")
+![Alt text](https://github.com/absirgue/micrograd/blob/main/micrograd/expression-graph-visualizations/Forward_pass_visualization.png?raw=true "Operation Tree")
 Backpropagation consists in walking backward in this tree to know how each Value node impacted the end result, L.
 
 To do so for the first layer is quite trivial:
